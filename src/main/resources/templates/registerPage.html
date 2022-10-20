@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>Blog Registration</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
@@ -17,50 +17,66 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"th:href="@{/}">User Registration and Login Module</a>
+            <a class="navbar-brand" href="#"th:href="@{/}">Registration and Login Module</a>
+
 
         </div>
     </div>
 </nav>
-
-    <ul th:each="user: ${users}"> </ul>
-
-    <form th:action="@{/registerPage}" th:object="${user}" method="POST">
-        <div class="form-group">
-            <label class="control-label" for="lastName">firstName </label>
-                <input id="firstname" type="text" th:field="*{firstName}" placeholder="First Name">
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="lastName">LastName </label>
-                <input id="lastName" type="lastName" th:field="*{lastName}" placeholder="lastName" />
+<br>
+<!--create Html registration form(header)-->
+<div class="container">
+    <div class="row">
+        <div class ="col-md-6 col-md -offset-3">
+            <!--  success message  -->
+            <div th:if="${param.success}">
+                <div class="alert alert -info">you've successfully registered to our awesome app!  </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label" for="email">Email  </label>
-                <input id="email" type="email" th:field="*{email}"  placeholder="email"/>
-            </div>
+            <h1>Blog Registration </h1>
 
-            <div class="form-group">
-                <label class="control-label" for="password">Password   </label>
-                <input id="password" type="password" th:field="*{password}" placeholder="password"/>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="streetName">StreetName</label>
-                <input id="streetName" type="streetName" th:field="*{streetName}" placeholder="streetName"/>
+            <form action="#" th:action="@{/registerPage}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label class="control-label" for="firstName">FirstName</label>
+                    <input id="firstName" class="form-control" th:field="*{firstName}" required autofocus="autofocus" />
+                </div>
 
+                <div class="form-group">
+                    <label class="control-label" for="lastName">LastName</label>
+                    <input id="lastName" class="form-control" th:field="*{lastName}" required autofocus="autofocus" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="email">Email</label>
+                    <input id="email" class="form-control" th:field="*{email}" required autofocus="autofocus" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password">Password</label>
+                    <input id="password" class="form-control" type="password"  th:field="*{password}" required autofocus="autofocus" />
+                </div>
+
+                <div class="form-group">
+                <label class="control-label" for="retypePassword">RetypePassword</label>
+                <input id="retypePassword" class="form-control"  th:field="*{retypePassword}" required autofocus="autofocus" />
             </div>
-            <button type="submit" class="btn btn-primary" >Register</button>
-        <span>Already registered?<a href="/@{/login}">Login here</a>
+                <div class="form-group">
+                    <label class="control-label" for="streetName">StreetName</label>
+                    <input id="streetName" class="form-control" th:field="*{streetName}" required autofocus="autofocus" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="city">City</label>
+                    <input id="city" class="form-control"   th:field="*{city}" required autofocus="autofocus" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn -info col-2">Register</button>
+                    <span>Already registered?<a href="/@{/login}">Login here</a>
 
                 </span>
+                </div>
+            </form>
+
         </div>
-
-    </form>
-
-
+    </div>
 </div>
 </body>
-
 </html>
-
-
